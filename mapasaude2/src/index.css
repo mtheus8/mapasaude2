@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "./styles-theme.css";
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+/* ---------------------------------------------------------------------- */
+/* MapsSaúde brand tokens — a wayfinding-signage system for health places */
+/* Layered on top of the shadcn theme file; does not edit it directly.    */
+/* ---------------------------------------------------------------------- */
+:root {
+  --ms-blue: #0b4a8f;
+  --ms-blue-dark: #073869;
+  --ms-blue-tint: #e8f0fa;
+  --ms-green: #1c8f5c;
+  --ms-green-tint: #e3f4ea;
+  --ms-coral: #e8572e;
+  --ms-coral-tint: #fdeae3;
+  --ms-amber: #c8830a;
+  --ms-amber-tint: #faf0dc;
+  --ms-paper: #f7f8f6;
+  --ms-card: #ffffff;
+  --ms-ink: #16191f;
+  --ms-ink-soft: #545b66;
+  --ms-mist: #dee3e7;
+  --ms-mist-strong: #c3cbd1;
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ms-paper);
+  color: var(--ms-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100%;
+}
+
+::selection {
+  background: var(--ms-blue);
+  color: white;
+}
+
+/* Scrollbars tuned to feel like a directory list, not a browser default */
+.ms-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.ms-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ms-scroll::-webkit-scrollbar-thumb {
+  background: var(--ms-mist-strong);
+  border-radius: 4px;
+}
+.ms-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--ms-ink-soft);
+}
+
+/* Leaflet overrides so the map matches the signage system */
+.leaflet-container {
+  font-family: var(--font-body);
+  background: #e6eaec;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 4px;
+  padding: 0;
+  box-shadow: 0 8px 24px rgba(16, 20, 28, 0.18);
+}
+.leaflet-popup-content {
+  margin: 0;
+  width: 220px !important;
+}
+.leaflet-popup-tip {
+  box-shadow: none;
+}
+.ms-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(16, 20, 28, 0.35);
+}
+.ms-marker-user {
+  border-radius: 999px;
+  background: var(--ms-blue);
+  box-shadow: 0 0 0 6px rgba(11, 74, 143, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
